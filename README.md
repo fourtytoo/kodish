@@ -31,4 +31,4 @@ error was due to a REST command.  The REST interface, in such cases,
 gets stuck as well.  The Kodi REST API is not pretty and these shell
 scripts add to its unreliability.
 
-That is to say, do __not_ rely on Kodi to wake up in the morning.
+That is to say, do _not_ rely on Kodi to wake up in the morning.

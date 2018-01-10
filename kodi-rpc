@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. $HOME/.kodi.cfg
+. $HOME/.kodish.cfg
 
 [ $# -lt 1 ] && {
     echo "usage: $0 method [params]"

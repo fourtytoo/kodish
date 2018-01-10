@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# This script starts playing a specific playlist (default is
+# night.m3u) on the Kodi box.  And fades the volume out.  It is up to
+# the user to customise that playlist with something suitable for the
+# purpose.  In the playlist you are free to put songs, radio stations,
+# or a mixture of the two.  They will be played randomly for ever.
+PLAYLIST=night
+
+# A fade out of 2 hours is plenty of time to doze off, but the sound
+# will be inaudible long before reaching volume zero.  Depending on
+# the PA output level.
+FADE_TIME=7200			# in seconds
+
+set -x
+kodi-fade out
+kodi-open "special://profile/playlists/music/${PLAYLIST}.m3u"
+kodi-shuffle true
+kodi-repeat '"all"'
+kodi-fade in
+kodi-fade out $FADE_TIME
+kodi-stop

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+player=$(kodi-aplayer)
+
+kodi-rpc Player.GoTo '{"playerid": '"$player"', "to": "'"$1"'"}'

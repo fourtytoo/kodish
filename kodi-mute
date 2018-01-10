@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kodi-rpc Application.SetMute '{"mute": '${1}'}'

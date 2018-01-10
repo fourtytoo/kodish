@@ -1,0 +1,26 @@
+#!/bin/sh
+
+. $HOME/.kodi.cfg
+
+
+case "$1" in
+    play|resume)
+	action=true
+	;;
+    pause|stop)
+	action=false
+	;;
+    toggle)
+	action='"toggle"'
+	;;
+    *)
+	echo "usage: $0 pause|play|toggle"
+	exit 1
+esac
+
+players=$(kodi-rpc Player.GetActivePlayers | jq .result\[\].playerid)
+
+for p in $players
+do
+    kodi-rpc Player.PlayPause '{ "playerid": '${p}', "play": '${action}' }'
+done

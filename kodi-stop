@@ -1,0 +1,10 @@
+#!/bin/sh
+
+players="$@"
+[ -z "$players" ] && {
+    players=$(kodi-rpc Player.GetActivePlayers | jq .result\[\].playerid)
+}
+for p in $players
+do
+    kodi-rpc Player.Stop '{ "playerid": '${p}' }'
+done

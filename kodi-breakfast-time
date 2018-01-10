@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# This script starts playing a specific playlist (default is
+# breakfast.m3u) on the Kodi box.  It is up to the user to customise
+# that playlist with something suitable for the purpose.  In the
+# playlist you are free to put songs, radio stations, or a mixture of
+# the two.  They will be played randomly for ever.
+PLAYLIST=breakfast
+
+# A fade-in of 2 minutes is what it takes me to wake up.
+FADE_TIME=120
+
+set -x
+kodi-fade out
+kodi-open "special://profile/playlists/music/${PLAYLIST}.m3u" '{"shuffled": true, "repeat": "all"}'
+kodi-shuffle true
+kodi-repeat '"all"'
+kodi-goto next
+kodi-fade in $FADE_TIME

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. $HOME/.kodi.cfg
+
+[ $# -lt 1 ] && {
+    echo "usage: $0 method [params]"
+    exit 1
+}
+
+method="$1"
+if [ -n "$2" ]
+then
+    params=', "params": '"$2"
+else
+    params=''
+fi
+
+curl -s --data-binary '{"jsonrpc": "2.0", "method": "'$method'"'"$params"', "id": 1}' \
+     -H 'content-type: application/json;' \
+     http://${USER}:${PASSWORD}@${HOST}/jsonrpc
+echo

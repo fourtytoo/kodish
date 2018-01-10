@@ -1,0 +1,63 @@
+#!/bin/sh
+
+io="$1"
+
+get-volume () {
+    kodi-rpc Application.GetProperties '{"properties": ["volume"]}' | jq .result.volume
+}
+
+set-volume () {
+    kodi-rpc Application.SetVolume '{"volume": '${1}'}'
+}
+
+case "$io" in
+    out)
+	steps=${2:-5}
+	orig_vol=$(get-volume)
+	current=$orig_vol
+	step=$(expr $current / $steps)
+	pause=1
+	[ $step -eq 0 ] && {
+	    step=1
+	    pause=$(expr $steps / $orig_vol)
+	}
+	[ $step -eq 0 ] && step=1
+	while [ $current -gt 0 ]
+	do
+	    sleep $pause
+	    current=$(expr $current - $step)
+	    set-volume $current
+	done
+	kodi-mute true
+	set-volume $orig_vol
+	;;
+    in)
+	steps=${2:-5}
+	volume=${3:-100}
+	step=$(expr $volume / $steps)
+	pause=1
+	[ $step -eq 0 ] && {
+	    step=1
+	    pause=$(expr $steps / $volume)
+	}
+	set-volume 0
+	kodi-mute false
+	current=0
+	while [ $current -lt $volume ]
+	do
+	    sleep $pause
+	    current=$(expr $current + $step)
+	    set-volume $current
+	done
+	set-volume $volume
+	;;
+    *)
+	cat <<EOF
+usage:
+	$0 in [time [volume]]
+	$0 out [time]
+Default for volume is 100%, default for time is 10 seconds.
+EOF
+	exit 1
+	;;
+esac

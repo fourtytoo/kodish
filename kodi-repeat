@@ -1,0 +1,5 @@
+#!/bin/sh
+
+player=$(kodi-aplayer)
+
+kodi-rpc Player.SetRepeat '{"playerid": '${player}', "repeat": '${1}'}'

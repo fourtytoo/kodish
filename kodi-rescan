@@ -1,0 +1,20 @@
+#!/bin/sh
+
+lib="$1"
+[ -z "$lib" ] && lib=both
+
+case "$lib" in
+    video)
+	kodi-rpc VideoLibrary.Scan
+	;;
+    audio)
+	kodi-rpc AudioLibrary.Scan
+	;;
+    both)
+	kodi-rpc AudioLibrary.Scan
+	kodi-rpc VideoLibrary.Scan
+	;;
+    *)
+	echo "usage: $0 [audio|video]"
+	exit 1
+esac

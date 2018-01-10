@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. $HOME/.kodi.cfg
+
+curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "whatever"}' -H 'content-type: application/json;' http://${USER}:${PASSWORD}@${HOST}/jsonrpc

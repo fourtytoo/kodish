@@ -1,0 +1,27 @@
+#!/bin/sh
+
+kodi-rpc Player.GetPlayers
+
+players=$(kodi-rpc Player.GetActivePlayers | jq .result\[\].playerid)
+echo $(echo $players | wc -w) players:
+for p in $players
+do
+    echo Player ${p}:
+    kodi-rpc Player.GetProperties '{ "properties": ["currentaudiostream", "audiostreams"], "playerid": '${p}' }'
+done
+
+kodi-rpc Application.GetProperties '{ "properties": ["name", "version", "muted", "volume"] }'
+
+playlists=$(kodi-rpc Playlist.GetPlaylists | jq .result\[\].playlistid)
+echo $(echo $playlists | wc -w) playlists:
+for p in $playlists
+do
+    echo Playlist ${p}:
+    kodi-rpc Playlist.GetItems '{ "properties": ["title", "album", "artist", "duration", "file"], "playlistid": '${p}' }'
+done
+
+echo My Radios:
+kodi-rpc Files.GetDirectory '{"directory": "plugin://plugin.audio.radio_de/stations/my/"}'
+
+echo My Playlists:
+kodi-rpc Files.GetDirectory '{"directory": "special://profile/playlists/music/"}'

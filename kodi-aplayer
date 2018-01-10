@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Return the id of the first active player
+
+kodi-rpc Player.GetActivePlayers | jq .result\[0\].playerid

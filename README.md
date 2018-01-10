@@ -1,7 +1,7 @@
 # kodish
 Shell scripts to control Kodi remotely
 
-A bung of shell scripts that do pretty much anything I need to do
+A bunch of shell scripts that do pretty much anything I need to do
 remotely on my Kodi server. As for now, it doesn't try to be a
 complete mapping of the Kodi REST API into shell commands.  And
 probably never will.

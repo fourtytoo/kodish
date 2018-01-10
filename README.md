@@ -24,13 +24,15 @@ HOST=localhost:8080
 
 ## Caveats
 Anyone who used a Kodi remote, whether an Android app or its web
-interface, knows how clunky and unreliable that is.  To just give you
-an example, on certain errors Kodi would pop up a dialog window and
-wait for the user to acknowledge the problem. Thus possibly requiring
-the user to walk back to the room where the player is sitting, find
-the IR remote, turn the TV on and press OK.  All the while the REST
-interface becomes unresponsive, waiting for the pop dialog to
-disappear.
+interface, knows how reliable that is.  Not.
+
+To just give you an example, on certain errors, especially if you play
+internet radio you will get them, Kodi pops up a dialog window in the
+TV screen and waits for the user to acknowledge the problem. Thus
+possibly requiring the user to walk back to the living room, where the
+player is sitting, find the IR remote, turn the TV on and press OK.
+All the while the REST interface becomes unresponsive, waiting for the
+pop dialog to disappear.
 
 Kodi behaviour reflects its primary use as video player and doesn't
 work well headless or remotely.  These shell scripts add to its

@@ -1,13 +1,11 @@
 # kodish
 Shell scripts to control Kodi remotely
 
-A bunch of shell scripts that do pretty much anything I need to do
-remotely on my Kodi server. As for now, it doesn't try to be a
-complete mapping of the Kodi REST API into shell commands.  And
-probably never will.
+A bunch of shell scripts that do all I need to do on my Kodi server.
+As for now, it doesn't try to be a complete mapping of the Kodi REST
+API into shell commands.  And probably never will.
 
-The cornerstone is `kodi-rpc`, which does pretty much all the heavy
-lifting.
+The cornerstone is `kodi-rpc`, which does the actual communication.
 
 Have a look at kodi-breakfast-time or kodi-night-time to see how
 these scripts work and interact with one another.
@@ -26,13 +24,14 @@ HOST=localhost:8080
 Anyone who used a Kodi remote, whether an Android app or its web
 interface, knows how reliable that is.  Not.
 
-To just give you an example, on certain errors, especially if you play
-internet radio you will get them, Kodi pops up a dialog window in the
+To just give you an example, on certain errors (especially if you play
+internet radio you will get them) Kodi pops up a dialog window in the
 TV screen and waits for the user to acknowledge the problem. Thus
 possibly requiring the user to walk back to the living room, where the
-player is sitting, find the IR remote, turn the TV on and press OK.
-All the while the REST interface becomes unresponsive, waiting for the
-pop dialog to disappear.
+player is sitting, find the IR remote, turn the TV on, figure out why
+the music stopped playing, and press OK.  All the while the REST
+interface becomes unresponsive, waiting for the pop dialog to
+disappear.
 
 Kodi behaviour reflects its primary use as video player and doesn't
 work well headless or remotely.  These shell scripts add to its

@@ -25,7 +25,7 @@ Anyone who used a Kodi remote, whether an Android app or its web
 interface, knows how reliable that is.  Not.
 
 To just give you an example, on certain errors (especially if you play
-internet radio you will get them) Kodi pops up a dialog window in the
+internet radio, you will get them) Kodi pops up a dialog window on the
 TV screen and waits for the user to acknowledge the problem. Thus
 possibly requiring the user to walk back to the living room, where the
 player is sitting, find the IR remote, turn the TV on, figure out why
